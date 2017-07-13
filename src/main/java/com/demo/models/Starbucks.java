@@ -5,7 +5,7 @@ import org.springframework.data.elasticsearch.annotations.GeoPointField;
 
 import javax.persistence.*;
 
-@Document(indexName = "starbucks")
+@Document(indexName = "starbucks", type = "geo-class-point-type", shards = 1, replicas = 0, refreshInterval = "-1")
 @Entity
 @Table(name = "starbucks_locations")
 public class Starbucks {
@@ -17,31 +17,21 @@ public class Starbucks {
     @Column(nullable = false)
     private String name;
 
-    private String ownershipType;
-
-    private String products;
-
-    private String services;
-
-    private String stations;
-
-    private String phone;
-
-    private String street1;
-
-    private String street2;
-
-    private String city;
-
-    private String state;
-
-    private String zip;
-
-    private String country;
-
     @Column(nullable = false)
     @GeoPointField
     private String location;
+
+    private String ownershipType;
+    private String products;
+    private String services;
+    private String stations;
+    private String phone;
+    private String street1;
+    private String street2;
+    private String city;
+    private String state;
+    private String zip;
+    private String country;
 
     public Starbucks() {
     }
@@ -70,6 +60,14 @@ public class Starbucks {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public String getOwnershipType() {
@@ -160,11 +158,4 @@ public class Starbucks {
         this.country = country;
     }
 
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
 }
