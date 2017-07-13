@@ -1,6 +1,8 @@
 spring.profiles.active: default
 ---
-spring.jpa:
-  hibernate.ddl-auto: create-drop
-  properties.hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
-  show-sql: false
+spring:
+  jpa:
+    hibernate.ddl-auto: create-drop
+    properties.hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
+    show-sql: false
+

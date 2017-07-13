@@ -5,9 +5,10 @@ import org.springframework.data.elasticsearch.annotations.GeoPointField;
 
 import javax.persistence.*;
 
-@Document(indexName = "starbucks", type = "geo-class-point-type", shards = 1, replicas = 0, refreshInterval = "-1")
+
 @Entity
 @Table(name = "starbucks_locations")
+@Document(indexName = "starbucks", type = "starbucks")
 public class Starbucks {
 
     @Id
