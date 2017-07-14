@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "starbucks_locations")
-@Document(indexName = "starbucks", type = "geo-class-point-type")
+@Document(indexName = "starbucks", type = "starbucks-geo-type")
 public class Starbucks {
 
     @Id

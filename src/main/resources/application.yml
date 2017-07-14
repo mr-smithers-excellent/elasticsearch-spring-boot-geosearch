@@ -5,4 +5,14 @@ spring:
     hibernate.ddl-auto: create-drop
     properties.hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
     show-sql: false
+---
+spring:
+  profiles: docker
+  data.elasticsearch.cluster-nodes: localhost:9300
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/starbucks  # see docker-compose.yml for customizing db name, username & password
+    username: starbucks_user
+    password: ilikecoffee
+---
 

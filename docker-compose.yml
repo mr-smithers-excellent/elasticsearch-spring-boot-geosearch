@@ -1,0 +1,15 @@
+version: "3.3"
+services:
+  database:
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    environment:
+      - "MYSQL_ROOT_PASSWORD=alwayschangeme"     # sets root password
+      - "MYSQL_USER=starbucks_user"              # creates user/password with permissions to starbucks DB (don't use root!)
+      - "MYSQL_PASSWORD=ilikecoffee"
+      - "MYSQL_DATABASE=starbucks"               # creates database named starbucks on start-up
+  elasticsearch:
+    image: elasticsearch:2.4.5-alpine
+    ports:
+      - "9300:9300"
