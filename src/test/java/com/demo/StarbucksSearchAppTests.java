@@ -1,7 +1,7 @@
 package com.demo;
 
 import com.demo.data.StarbucksRepository;
-import com.demo.models.Starbucks;
+import com.demo.model.Starbucks;
 import com.demo.search.StarbucksSearch;
 import com.google.common.collect.Lists;
 import org.junit.Before;

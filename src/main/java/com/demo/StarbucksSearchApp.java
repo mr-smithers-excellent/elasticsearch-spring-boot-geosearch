@@ -1,7 +1,7 @@
 package com.demo;
 
 import com.demo.data.StarbucksRepository;
-import com.demo.models.Starbucks;
+import com.demo.model.Starbucks;
 import com.demo.search.StarbucksSearch;
 import org.h2.server.web.WebServlet;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.demo.models;
+package com.demo.model;
 
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.GeoPointField;
@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "starbucks_locations")
-@Document(indexName = "starbucks", type = "starbucks")
+@Document(indexName = "starbucks", type = "geo-class-point-type")
 public class Starbucks {
 
     @Id

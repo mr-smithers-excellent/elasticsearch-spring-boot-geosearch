@@ -1,6 +1,6 @@
 package com.demo.search;
 
-import com.demo.models.Starbucks;
+import com.demo.model.Starbucks;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,6 +22,7 @@ public class StarbucksSearchTests {
     @Autowired
     private StarbucksSearch starbucksSearch;
 
+    // default page request
     private Pageable pageRequest = new PageRequest(0,10);
 
     /*
@@ -42,5 +43,25 @@ public class StarbucksSearchTests {
         Page<Starbucks> results = starbucksSearch.findByCity("New York", pageRequest);
         assertThat(results).isNotNull();
         assertThat(results.getTotalElements()).isEqualTo(203);
+    }
+
+    /*
+     * Test search by location
+     */
+    @Test
+    public void test3FindByLocation() {
+        Page<Starbucks> results = starbucksSearch.findByLocation(39.09, -94.58, pageRequest);  // Kansas City, MO
+        assertThat(results).isNotEmpty();
+        assertThat(results.getTotalElements()).isEqualTo(61);
+    }
+
+    /*
+     * Test search by location within specified distance (in miles)
+     */
+    @Test
+    public void test4FindByLocationAndDistance() {
+        Page<Starbucks> results = starbucksSearch.findByLocationAndDistance(39.09, -94.58, 5, pageRequest);  // Kansas City, MO
+        assertThat(results).isNotEmpty();
+        assertThat(results.getTotalElements()).isEqualTo(5);
     }
 }
