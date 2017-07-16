@@ -2,5 +2,11 @@
 
 node {
     def mvnHome = tool 'M3'
-    sh "${mvnHome}/bin/mvn -B verify"
+
+    stage('Preparation') {
+        // checkout code from GitHub
+        checkout scm
+
+        sh "${mvnHome}/bin/mvn -B verify"
+    }
 }
