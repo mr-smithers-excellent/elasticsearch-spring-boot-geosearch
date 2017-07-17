@@ -1,7 +1,6 @@
 package com.demo.search;
 
 import com.demo.model.Starbucks;
-import com.demo.service.StarbucksService;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,7 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class StarbucksSearchTests {
 
     @Autowired
-    private StarbucksService starbucksService;
+    private StarbucksSearchService starbucksSearchService;
 
     // default page request
     private Pageable pageRequest = new PageRequest(0,10);
@@ -31,7 +30,7 @@ public class StarbucksSearchTests {
      */
     @Test
     public void test1FindByState() {
-        Page<Starbucks> results = starbucksService.findByState("MD", pageRequest);
+        Page<Starbucks> results = starbucksSearchService.findByState("MD", pageRequest);
         assertThat(results).isNotNull();
         assertThat(results.getTotalElements()).isEqualTo(214);
     }
@@ -41,7 +40,7 @@ public class StarbucksSearchTests {
      */
     @Test
     public void test2FindByCity() {
-        Page<Starbucks> results = starbucksService.findByCity("New York", pageRequest);
+        Page<Starbucks> results = starbucksSearchService.findByCity("New York", pageRequest);
         assertThat(results).isNotNull();
         assertThat(results.getTotalElements()).isEqualTo(203);
     }
@@ -51,7 +50,7 @@ public class StarbucksSearchTests {
      */
     @Test
     public void test3FindByLocation() {
-        Page<Starbucks> results = starbucksService.findByLocation(39.09, -94.58, pageRequest);  // Kansas City, MO
+        Page<Starbucks> results = starbucksSearchService.findByLocation(39.09, -94.58, pageRequest);  // Kansas City, MO
         assertThat(results).isNotEmpty();
         assertThat(results.getTotalElements()).isEqualTo(61);
     }
@@ -61,7 +60,7 @@ public class StarbucksSearchTests {
      */
     @Test
     public void test4FindByLocationAndDistance() {
-        Page<Starbucks> results = starbucksService.findByLocation(39.09, -94.58, 5, pageRequest);  // Kansas City, MO
+        Page<Starbucks> results = starbucksSearchService.findByLocation(39.09, -94.58, 5, pageRequest);  // Kansas City, MO
         assertThat(results).isNotEmpty();
         assertThat(results.getTotalElements()).isEqualTo(5);
     }

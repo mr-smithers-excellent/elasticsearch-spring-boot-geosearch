@@ -1,18 +1,32 @@
-spring.profiles.active: default
+spring.profiles.active: aws
 ---
 spring:
   jpa:
     hibernate.ddl-auto: create-drop
     properties.hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
     show-sql: false
+  data.elasticsearch.properties:
+    path.home: target/elastic
+    transport.tcp.connect_timeout: 120s
 ---
 spring:
   profiles: docker
   data.elasticsearch.cluster-nodes: localhost:9300
-  datasource:
+  datasource:  # Docker MySQL settings
     driverClassName: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/starbucks  # see docker-compose.yml for customizing db name, username & password
     username: starbucks_user
     password: ilikecoffee
+---
+spring:
+  profiles: aws
+  data.jest:
+    uri: https://[AWS_ELASTICSEARCH_URI]  # URI for AWS Elasticsearch index
+    aws-region: us-east-1
+  datasource:  # RDS settings
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://[AWS_DB_HOST]:3306/starbucks
+    username: [DB_USERNAME]
+    password: [DB_PASSWORD]
 ---
 

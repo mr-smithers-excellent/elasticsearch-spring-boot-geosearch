@@ -1,10 +1,10 @@
 package com.demo.search;
 
 import com.demo.model.Starbucks;
+import com.github.vanroy.springdata.jest.JestElasticsearchTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.data.elasticsearch.core.geo.GeoPoint;
 import org.springframework.data.elasticsearch.core.query.Criteria;
 import org.springframework.data.elasticsearch.core.query.CriteriaQuery;
@@ -14,12 +14,12 @@ import org.springframework.stereotype.Service;
 public class StarbucksGeoSearchImpl implements StarbucksGeoSearch {
 
     @Autowired
-    private final ElasticsearchTemplate elasticsearchTemplate;
+    private final JestElasticsearchTemplate elasticsearchTemplate;
 
     private static int DEFAULT_DISTANCE = 20;
     private static String DISTANCE_SUFFIX = "mi";
 
-    public StarbucksGeoSearchImpl(ElasticsearchTemplate elasticsearchTemplate) {
+    public StarbucksGeoSearchImpl(JestElasticsearchTemplate elasticsearchTemplate) {
         this.elasticsearchTemplate = elasticsearchTemplate;
     }
 

@@ -1,10 +1,10 @@
-package com.demo.service;
+package com.demo.search;
 
 import com.demo.model.Starbucks;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-public interface StarbucksService {
+public interface StarbucksSearchService {
 
     Page<Starbucks> findByCity(String city, Pageable pageable);
 

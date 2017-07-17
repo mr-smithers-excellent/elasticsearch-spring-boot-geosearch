@@ -13,10 +13,4 @@ public interface StarbucksSearch extends ElasticsearchRepository<Starbucks, Long
 
     Page<Starbucks> findByState(String state, Pageable pageable);
 
-//    @Query("{\"query\": {\"filtered\": {\"filter\": {\"geo_distance\": {\"distance\": \"20mi\", \"location\": {\"lat\": \"?0\", \"lon\": \"?1\"}}}}}}")
-//    Page<Starbucks> findByLocation(@Param("lat") double lat, @Param("lon") double lon, Pageable pageable);
-//
-//    @Query("{\"query\": {\"filtered\": {\"filter\": {\"geo_distance\": {\"distance\": \"?2mi\", \"location\": {\"lat\": \"?0\", \"lon\": \"?1\"}}}}}}")
-//    Page<Starbucks> findByLocationAndDistance(@Param("lat") double lat, @Param("lon") double lon, @Param("dist") int distanceInMiles, Pageable pageable);
-
 }

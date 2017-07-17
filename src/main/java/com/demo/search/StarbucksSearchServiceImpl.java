@@ -1,22 +1,17 @@
-package com.demo.service;
+package com.demo.search;
 
-import com.demo.data.StarbucksRepository;
 import com.demo.model.Starbucks;
-import com.demo.search.StarbucksGeoSearch;
-import com.demo.search.StarbucksSearch;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
-public class StarbucksServiceImpl implements StarbucksService {
+public class StarbucksSearchServiceImpl implements StarbucksSearchService {
 
-    private final StarbucksRepository starbucksRepository;
     private final StarbucksSearch starbucksSearch;
     private final StarbucksGeoSearch starbucksGeoSearch;
 
-    public StarbucksServiceImpl(StarbucksRepository starbucksRepository, StarbucksSearch starbucksSearch, StarbucksGeoSearch starbucksGeoSearch) {
-        this.starbucksRepository = starbucksRepository;
+    public StarbucksSearchServiceImpl(StarbucksSearch starbucksSearch, StarbucksGeoSearch starbucksGeoSearch) {
         this.starbucksSearch = starbucksSearch;
         this.starbucksGeoSearch = starbucksGeoSearch;
     }
