@@ -1,4 +1,4 @@
-spring.profiles.active: aws
+spring.profiles.active: default
 ---
 spring:
   jpa:
@@ -22,7 +22,7 @@ spring:
   profiles: aws
   data.jest:
     uri: https://[AWS_ELASTICSEARCH_URI]  # URI for AWS Elasticsearch index
-    aws-region: us-east-1
+    aws-region: [AWS_REGION_NAME]
   datasource:  # RDS settings
     driverClassName: com.mysql.jdbc.Driver
     url: jdbc:mysql://[AWS_DB_HOST]:3306/starbucks
