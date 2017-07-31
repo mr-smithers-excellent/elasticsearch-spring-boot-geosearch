@@ -12,4 +12,5 @@ services:
   elasticsearch:
     image: elasticsearch:2.4.5-alpine
     ports:
+      - "9200:9200"
       - "9300:9300"
