@@ -1,16 +1,15 @@
 # Elasticsearch Spring Boot Geosearch
 
-RESTful API that allows a user to find Starbucks locations based on one or more of the following criteria:
+RESTful API that allows a user to find Starbucks locations based on one of the following criteria:
 
   * Location (latitude, longitude & distance)
   * City
   * State
   * Zip code
-  * Products (e.g. oven-warmed food)
-  * Services (e.g. wireless hotstop)
 
 ## Technologies
 
+* [Spring Boot](https://projects.spring.io/spring-boot/)
 * [Spring Data Elasticsearch](https://projects.spring.io/spring-data-elasticsearch/)
 * [Spring Data JPA](https://projects.spring.io/spring-data-jpa/)
 * [Spring Data REST](https://projects.spring.io/spring-data-rest/)
@@ -35,12 +34,12 @@ RESTful API that allows a user to find Starbucks locations based on one or more 
 
 ### Steps
 
-1. Set the Spring profile to `default` in application.yml (only if previously changed).
+1. Set the Spring profile to `default` in `application.yml` (only if previously changed)
 ```YAML
 spring.profiles.active: default
 ```
 
-2. Run the Java project using `mvn spring-boot:run` on the command line or using your favorite IDE.
+2. Run the Java project using `mvn spring-boot:run` on the command line or using your favorite IDE
 
 ## Running on Docker
 
@@ -54,9 +53,9 @@ spring.profiles.active: default
 spring.profiles.active: docker
 ```
 
-2. From the root directory of this project, run `docker-compose up` on the command line.
+2. From the root directory of this project, run `docker-compose up` on the command line
 
-3. Run the Java project using `mvn spring-boot:run` on the command line or using your favorite IDE.
+3. Run the Java project using `mvn spring-boot:run` on the command line or using your favorite IDE
 
 ## Running on AWS Elasticsearch Service & RDS
 
@@ -66,11 +65,11 @@ spring.profiles.active: docker
 
 ### Steps
 
-1. Set the Spring profile to `aws` in application.yml  
+1. Set the Spring profile to `aws` in `application.yml`  
 ```YAML
 spring.profiles.active: aws
 ```
-2. Modify the `application.yml` file with your Elasticsearch & RDS settings
+2. Modify the `application.yml` file with your Elasticsearch & RDS settings.
 ```YAML
 spring:
   profiles: aws
@@ -84,7 +83,13 @@ spring:
     password: [DB_PASSWORD]
 ```
 
-3. Run the Java project using `mvn spring-boot:run` on the command line or using your favorite IDE.
+3. Run the Java project using `mvn spring-boot:run` on the command line or using your favorite IDE
+
+## Running the Tests
+
+There are a complete set of unit tests covering core search capabilities as well as data population/synchronization from a MySQL database.  To run the tests:
+
+```mvn test```
 
 ## Acknowledgements
 
