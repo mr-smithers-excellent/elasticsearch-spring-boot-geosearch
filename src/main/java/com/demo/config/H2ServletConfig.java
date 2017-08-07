@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 /*
- * Enable to H2 web console in default & local envs
+ * Enable H2 web console in default & local environments only
  */
 @Configuration
 @Profile({"default", "local"})

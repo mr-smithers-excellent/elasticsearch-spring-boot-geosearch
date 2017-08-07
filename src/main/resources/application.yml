@@ -8,10 +8,16 @@ spring:
   data.elasticsearch.properties:
     path.home: target/elastic
     transport.tcp.connect_timeout: 120s
+endpoints:
+  actuator:
+    enabled: true
+management:
+  security:
+    enabled: false  # disables security for Actuator endpoints, always change to true for PROD config
 ---
 spring:
   profiles: docker
-  data.elasticsearch.cluster-nodes: localhost:9300
+  data.jest.uri: http://localhost:9200
   datasource:  # Docker MySQL settings
     driverClassName: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/starbucks  # see docker-compose.yml for customizing db name, username & password
