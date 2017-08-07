@@ -11,7 +11,7 @@ RESTful API that allows a user to find Starbucks locations based on one of the f
 
 This project demonstrates two ways in which you can utilize Elasticsearch's geospatial search capabilities via the Spring Data Elasticsearch library.
 
-1. **ElasticsearchRepository method** - implementation automatically taken care of by Spring Data Elasticsearch via naming conventions
+1. **ElasticsearchRepository method** - implementation automatically taken care of by Spring Data Elasticsearch via naming convention `findByLocationNear()`
 ```java
 @RepositoryRestResource(path = "/starbucks-locations", collectionResourceRel = "/starbucks-locations")
 public interface StarbucksSearchRepository extends ElasticsearchRepository<Starbucks, Long>, StarbucksSearchRepositoryCustom {
