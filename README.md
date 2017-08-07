@@ -6,7 +6,47 @@ RESTful API that allows a user to find Starbucks locations based on one of the f
   * City
   * State
   * Zip code
+  
+## Geosearch Options
 
+This project demonstrates two ways in which you can utilize Elasticsearch's geospatial search capabilities via the Spring Data Elasticsearch library.
+
+1. **ElasticsearchRepository method** - implementation automatically taken care of by Spring Data Elasticsearch via naming conventions
+```java
+@RepositoryRestResource(path = "/starbucks-locations", collectionResourceRel = "/starbucks-locations")
+public interface StarbucksSearchRepository extends ElasticsearchRepository<Starbucks, Long>, StarbucksSearchRepositoryCustom {
+
+  Page<Starbucks> findByLocationNear(@Param("location") Point point, @Param("distance") Distance distance, Pageable pageable);
+
+}
+```
+2. **Custom Repository method** - implementation defined in `StarbucksSearchRepositoryImpl`
+```java
+@Repository
+public class StarbucksSearchRepositoryImpl implements StarbucksSearchRepositoryCustom {
+
+	private final JestClient jestClient;
+	private final JestElasticsearchTemplate elasticsearchTemplate;
+
+	public StarbucksSearchRepositoryImpl(JestClient jestClient) {
+		this.jestClient = jestClient;
+		this.elasticsearchTemplate = new JestElasticsearchTemplate(this.jestClient);
+	}
+
+	@Override
+	public Page<Starbucks> findByLocationWithin(Point point, Distance distance, Pageable pageable) {
+		return elasticsearchTemplate.queryForPage(getGeoQuery(point, distance, pageable), Starbucks.class);
+	}
+
+	private CriteriaQuery getGeoQuery(Point point, Distance distance, Pageable pageable) {
+		return new CriteriaQuery(
+				new Criteria("location").within(point, distance),
+				pageable
+		);
+	}
+
+}
+```
 ## Technologies
 
 * [Spring Boot](https://projects.spring.io/spring-boot/)
@@ -87,9 +127,11 @@ spring:
 
 ## Running the Tests
 
-There are a complete set of unit tests covering core search capabilities as well as data population/synchronization from a MySQL database.  To run the tests:
+There are a complete set of unit tests covering core search capabilities as well as data population/synchronization from a MySQL database.  To run the tests from the command line:
 
-```mvn test```
+```
+mvn test
+```
 
 ## Acknowledgements
 
