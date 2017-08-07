@@ -1,8 +1,7 @@
-package com.demo.util;
+package com.demo.convert;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.demo.convert.ListConverter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

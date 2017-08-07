@@ -27,4 +27,5 @@ public class ListConverter implements AttributeConverter<List, String> {
 	public List convertToEntityAttribute(String string) {
 		return new ArrayList(Arrays.asList(StringUtils.delimitedListToStringArray(string, DELIMITER)));
 	}
+
 }

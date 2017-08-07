@@ -1,8 +1,7 @@
-package com.demo.util;
+package com.demo.convert;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.demo.convert.GeoPointConverter;
 import org.junit.Test;
 import org.springframework.data.elasticsearch.core.geo.GeoPoint;
 
