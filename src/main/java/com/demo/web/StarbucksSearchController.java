@@ -5,7 +5,6 @@ import com.demo.search.StarbucksSearchRepository;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.geo.Distance;
 import org.springframework.data.geo.Point;
-import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.webmvc.RepositorySearchesResource;
 import org.springframework.hateoas.EntityLinks;
 import org.springframework.hateoas.Link;
@@ -15,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,7 +31,7 @@ public class StarbucksSearchController implements ResourceProcessor<RepositorySe
 	}
 
 	@RequestMapping(value = "/findByLocationWithin", method = RequestMethod.GET)
-	public @ResponseBody ResponseEntity searchByLocation(@Param("location") Double[] location, @Param("distance") Distance distance, Pageable pageable) {
+	public @ResponseBody ResponseEntity searchByLocation(@RequestParam("location") Double[] location, @RequestParam("distance") Distance distance, Pageable pageable) {
 		Point point = new Point(location[0], location[1]);
 		return new ResponseEntity(starbucksSearchRepository.findByLocationWithin(point, distance, pageable), HttpStatus.OK);
 	}
